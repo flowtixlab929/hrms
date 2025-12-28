@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hrms</title>
+    <title>HRMS - Human Resource Management System</title>
     <style>
         /* 1. Reset default browser margins and set full height */
         body, html {
@@ -12,7 +12,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden; /* Prevents double scrollbars */
-            background-color: #ffffff; /* Background color while loading */
+            background-color: #ffffff;
         }
 
         /* 2. Style the iframe to take up 100% of the viewport */
@@ -27,26 +27,40 @@
             z-index: 1;
         }
 
-        /* 3. Loading Spinner Styles (Optional but recommended for speed perception) */
+        /* 3. Loading Screen Styles */
         #loader {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0; /* Behind the iframe, but visible until iframe loads */
-            font-family: sans-serif;
-            color: #555;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
             text-align: center;
+        }
+        
+        .welcome-message {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a73e8;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 30px;
+            font-weight: 400;
         }
         
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+            border-top: 4px solid #1a73e8;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 10px auto;
+            margin: 0 auto;
         }
 
         @keyframes spin {
@@ -58,14 +72,16 @@
 <body>
 
     <div id="loader">
+        <div class="welcome-message">Welcome to HR Management System</div>
+        <div class="subtitle">Preparing your workspace...</div>
         <div class="spinner"></div>
-        <p>Loading...</p>
     </div>
 
     <iframe 
         id="fullscreen-iframe"
         src="https://script.google.com/macros/s/AKfycbxiQwFnDwi378HP1W9t2Mo5WCOrdb1e3tGnHc_7OwhFeGARShozL9rwF3yHXJTpqilb/exec" 
         frameborder="0" 
+        allow="camera; microphone; autoplay"
         allowfullscreen
         onload="document.getElementById('loader').style.display='none';"
     ></iframe>
