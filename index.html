@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <style>
+        /* 1. Reset default browser margins and set full height */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevents double scrollbars */
+            background-color: #ffffff; /* Background color while loading */
+        }
+
+        /* 2. Style the iframe to take up 100% of the viewport */
+        #fullscreen-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block; /* Removes potential inline spacing */
+            z-index: 1;
+        }
+
+        /* 3. Loading Spinner Styles (Optional but recommended for speed perception) */
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0; /* Behind the iframe, but visible until iframe loads */
+            font-family: sans-serif;
+            color: #555;
+            text-align: center;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <iframe 
+        id="fullscreen-iframe"
+        src="https://script.google.com/macros/s/AKfycby_U-nexi7y0PPY2gndkxbUuKQHsbuO2Crmn3Z4QFSad_B8ALdndY7uFzU_v1fUnCGO/exec" 
+        frameborder="0" 
+        allowfullscreen
+        onload="document.getElementById('loader').style.display='none';"
+    ></iframe>
+
+</body>
+</html>
